@@ -28,9 +28,20 @@ app.use(morgan("common"));
 app.use(bodyParser.json({limit : "30mb" , extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb" , extended : true}));
 
-app.use(cors({
-    origin: 'https://sociopediaweb-frontend.vercel.app'
-}));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "hhttps://sociopediaweb-frontend.vercel.app");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT , PATCH"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+});
+// app.use(cors({
+//     origin: 'https://sociopediaweb-frontend.vercel.app'
+// }));
 app.use("/assets",express.static(path.join(__dirname, 'public/assets')));
 
 // multer configure 
