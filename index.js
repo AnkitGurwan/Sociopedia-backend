@@ -28,17 +28,26 @@ app.use(morgan("common"));
 app.use(bodyParser.json({limit : "30mb" , extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb" , extended : true}));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "hhttps://sociopediaweb-frontend.vercel.app");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT , PATCH"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-});
+const corsOptions = {
+  origin: "https://sociopediaweb-frontend.vercel.app", // use your actual domain name (or localhost), using * is not recommended
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
+  credentials: true
+};
+
+app.use(cors({corsOptions})); 
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "https://sociopediaweb-frontend.vercel.app");
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT , PATCH"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+// });
 // app.use(cors({
 //     origin: 'https://sociopediaweb-frontend.vercel.app'
 // }));
