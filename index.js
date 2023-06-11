@@ -29,7 +29,7 @@ app.use(bodyParser.json({limit : "30mb" , extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb" , extended : true}));
 
 const corsOptions = {
-  origin: "https://sociopediaweb-frontend.vercel.app" || "http://localhost:3000", 
+  origin: "http://localhost:3000", 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
   credentials: true
