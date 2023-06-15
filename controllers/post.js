@@ -33,6 +33,19 @@ export const createPost = async (req,res) => {
     }
 }
 
+
+export const deleteProject = async (req, res) => {
+    try{
+        const pId = req.params.id;
+        await Post.findByIdAndDelete(pId);
+
+        res.status(200).json({ msg: "Success" });
+    }
+    catch(err){
+        res.status(404).json({ error : err.message});
+    }
+}
+
 export const getFeedPosts = async ( req,res ) => {
     try{
         const posts = await Post.find();
