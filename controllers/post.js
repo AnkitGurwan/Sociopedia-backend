@@ -34,7 +34,7 @@ export const createPost = async (req,res) => {
 }
 
 
-export const deleteProject = async (req, res) => {
+export const deletePost = async (req, res) => {
     try{
         const pId = req.params.id;
         await Post.findByIdAndDelete(pId);
