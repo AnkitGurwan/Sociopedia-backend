@@ -21,6 +21,7 @@ export const register = async (req,res) => {
             occupation
     }=req.body;
 
+
     bcrypt.hash(password, saltrounds , async (err, hash) => {            // Helps to hash password 
 
         if (err) {
@@ -52,7 +53,6 @@ export const register = async (req,res) => {
 export const login = async (req,res) => {
     try{
         const { email,password } = req.body;
-        console.log(email,password)
         const user = await User.findOne ( {email:email});
 
         if(!user) return res.status(400).json({ msg : "User doesn't exist"});
